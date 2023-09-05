@@ -1,7 +1,7 @@
 import React from 'react'
-import { CustommFilterProps } from '@/types'
+import { CustomFilterProps } from '@/types'
 
-function CustomFilter({title}: CustommFilterProps) {
+function CustomFilter({title}: CustomFilterProps) {
   return (
     <div>{title}</div>
   )
