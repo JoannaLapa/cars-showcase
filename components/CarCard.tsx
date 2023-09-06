@@ -1,6 +1,7 @@
 'use client'
 
 import { CarProps } from '@/types';
+import CarDetails from './CarDetails';
 import React from 'react';
 import { useState } from 'react';
 import CustomButton from './CustomButton';
@@ -60,6 +61,8 @@ const CarCard = ({ car }: CarCardProps) => {
 					/>
 				</div>
 			</div>
+
+			<CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />
 		</div>
 	);
 };
