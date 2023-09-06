@@ -1,9 +1,9 @@
 export async function fetchCars() {
 	const headers = {
-		'X-RapidAPI-Key': '91ef6ed641msh2d627b1e54a3322p10a9f5jsne5f77a1937d2',
-		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com',
+		'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY,
+		'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPID_API_HOST,
 	};
-
+	console.log(headers);
 	const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla', { headers: headers });
 
 	const result = await response.json();
@@ -12,17 +12,16 @@ export async function fetchCars() {
 }
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
-    const basePricePerDay = 50; // Base rental price per day in dollars
-    const mileageFactor = 0.1; // Additional rate per mile driven
-    const ageFactor = 0.05; // Additional rate per year of vehicle age
-  
-    // Calculate additional rate based on mileage and age
-    const mileageRate = city_mpg * mileageFactor;
-    const ageRate = (new Date().getFullYear() - year) * ageFactor;
-  
-    // Calculate total rental rate per day
-    const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
-  
-    return rentalRatePerDay.toFixed(0);
-  };
-  
+	const basePricePerDay = 50; // Base rental price per day in dollars
+	const mileageFactor = 0.1; // Additional rate per mile driven
+	const ageFactor = 0.05; // Additional rate per year of vehicle age
+
+	// Calculate additional rate based on mileage and age
+	const mileageRate = city_mpg * mileageFactor;
+	const ageRate = (new Date().getFullYear() - year) * ageFactor;
+
+	// Calculate total rental rate per day
+	const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
+
+	return rentalRatePerDay.toFixed(0);
+};
